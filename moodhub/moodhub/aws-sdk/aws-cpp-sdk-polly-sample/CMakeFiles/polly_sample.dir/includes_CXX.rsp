@@ -1,0 +1,1 @@
+-I/Users/epsund/Downloads/aws-sdk-cpp-master/aws-cpp-sdk-text-to-speech/include -I/Users/epsund/Downloads/aws-sdk-cpp-master/aws-cpp-sdk-polly/include -I/Users/epsund/Downloads/aws-sdk-cpp-master/aws-cpp-sdk-core/include 
