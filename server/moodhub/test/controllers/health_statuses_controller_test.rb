@@ -17,7 +17,7 @@ class HealthStatusesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create health_status" do
     assert_difference('HealthStatus.count') do
-      post health_statuses_url, params: { health_status: { s3_image_id: @health_status.s3_image_id, user_id: @health_status.user_id } }
+      post health_statuses_url, params: { health_status: { happiness_level: @health_status.happiness_level, rekognition_dump: @health_status.rekognition_dump, s3_image_id: @health_status.s3_image_id, user_id: @health_status.user_id } }
     end
 
     assert_redirected_to health_status_url(HealthStatus.last)
@@ -34,7 +34,7 @@ class HealthStatusesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update health_status" do
-    patch health_status_url(@health_status), params: { health_status: { s3_image_id: @health_status.s3_image_id, user_id: @health_status.user_id } }
+    patch health_status_url(@health_status), params: { health_status: { happiness_level: @health_status.happiness_level, rekognition_dump: @health_status.rekognition_dump, s3_image_id: @health_status.s3_image_id, user_id: @health_status.user_id } }
     assert_redirected_to health_status_url(@health_status)
   end
 

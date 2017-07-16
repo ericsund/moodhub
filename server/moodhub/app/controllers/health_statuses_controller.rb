@@ -2,6 +2,7 @@ class HealthStatusesController < ApplicationController
   before_action :set_health_status, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, only: [:create, :update] #for dev only, disables authenticity checking on create/update
 
+
   # GET /health_statuses
   # GET /health_statuses.json
   def index
@@ -70,6 +71,8 @@ class HealthStatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def health_status_params
-      params.require(:health_status).permit(:user_id, :s3_image_id)
+      params.permit(:user_id, :s3_image_id)
+      # params.require(:health_status).permit(:user_id, :s3_image_id, :happiness_level, :rekognition_dump)
+
     end
 end

@@ -21,6 +21,16 @@
     <%= form.text_field :s3_image_id, id: :health_status_s3_image_id %>
   </div>
 
+  <div class="field">
+    <%= form.label :happiness_level %>
+    <%= form.text_field :happiness_level, id: :health_status_happiness_level %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rekognition_dump %>
+    <%= form.text_area :rekognition_dump, id: :health_status_rekognition_dump %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -10,5 +10,15 @@
   <%= @health_status.s3_image_id %>
 </p>
 
+<p>
+  <strong>Happiness level:</strong>
+  <%= @health_status.happiness_level %>
+</p>
+
+<p>
+  <strong>Rekognition dump:</strong>
+  <%= @health_status.rekognition_dump %>
+</p>
+
 <%= link_to 'Edit', edit_health_status_path(@health_status) %> |
 <%= link_to 'Back', health_statuses_path %>

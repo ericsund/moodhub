@@ -3,7 +3,11 @@
 one:
   user_id: 1
   s3_image_id: MyString
+  happiness_level: 1.5
+  rekognition_dump: MyText
 
 two:
   user_id: 1
   s3_image_id: MyString
+  happiness_level: 1.5
+  rekognition_dump: MyText
