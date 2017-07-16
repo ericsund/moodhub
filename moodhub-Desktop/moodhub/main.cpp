@@ -14,6 +14,8 @@ UPLOAD.SH AND EVERYTHING ELSE OR ELSE IT WON'T REALLY WORK
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctime>
+#include <iomanip>
 
 using namespace cv;
 using namespace std;
@@ -22,15 +24,17 @@ int main(int, char**) {
     
     // vars -----------------------------------------------------------------------
     unsigned int freq;
+    string filename;
     // ----------------------------------------------------------------------------
     
     // display welcome ------------------------------------------------------------
     cout << "W E L C O M E   T O   M O O D H U B\n\n";
+    time_t fileNameTime;
     // ----------------------------------------------------------------------------
     
     
     // get input ------------------------------------------------------------------
-    cout << "Frequency in seconds: ";
+    cout << "\nFrequency in seconds: ";
     cin >> freq;
     freq *= 1000000; //convert to microseconds to use with usleep
     // ----------------------------------------------------------------------------
@@ -51,7 +55,12 @@ int main(int, char**) {
         
         // save picture -----------------------------------------------------------
         cout << "Saving picture...\n";
-        imwrite("mood.jpg", frame);
+        fileNameTime = time(NULL);
+        string fileNameTimeStr = to_string(fileNameTime);
+        imwrite(fileNameTimeStr+".jpg", frame);
+        ofstream out("currentUpload");
+        out << fileNameTimeStr+".jpg";
+        out.close();
         cout << "Saved picture...\n";
         // ------------------------------------------------------------------------
      

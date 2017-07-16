@@ -1,4 +1,10 @@
-file='mood.jpg'
+filename=`sed "${1}q;d" currentUpload`
+
+echo "THIS IS A FILE"
+echo $filename
+
+file=$filename
+
 bucket=moodhub
 resource="/${bucket}/${file}"
 contentType="application/x-jpg"
@@ -14,4 +20,3 @@ curl -X PUT -T "${file}" \
 -H "Authorization: AWS ${s3Key}:${signature}" \
 https://${bucket}.s3.amazonaws.com/${file}
 
-curl -H 'Content-Type:application/json' -H 'Accept:application/json' 192.168.43.163:3000/health_statuses -X POST -d '{"user_id": 5, "s3_image_id": "image1"}' localhost:3000/health_statuses
