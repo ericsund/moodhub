@@ -12,15 +12,34 @@ class HealthStatus < ApplicationRecord
                                         attributes: ["ALL"], # accepts DEFAULT, ALL
                                     })
 
-    binding.pry
-
-    puts resp.face_details[0].emotions[0]
-
+    self.happiness_level = happy_metric(resp.face_details[0].emotions)
+    self.rekognition_dump = resp.face_details.to_s
   end
 
   def happy_metric(rekog_emotions)
+    # binding.pry
 
+    metric = 0
 
+    rekog_emotions.each do |emotion|
+      if emotion.type.in?(["HAPPY", "SAD", "ANGRY"])
+        case emotion.type
+          when "HAPPY"
+            metric = emotion.confidence
+          when "SAD"
+            metric = (100 - (1.1 * emotion.confidence)).clamp(0, 100)
+          when "ANGRY"
+            metric = (100 - (1.25 * emotion.confidence)).clamp(0, 100)
+          else
+            metric = 50
+        end
+        break
+      else
+        metric = 50
+      end
+    end
+
+    return metric
   end
 
   # t.integer "user_id"
