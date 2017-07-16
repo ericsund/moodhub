@@ -1,3 +1,6 @@
 #!/bin/sh
-export aws_access_key_id="AKIAI5HU3XMBRXJBUVXQ"
-export aws_secret_access_key="EEzCOWIHpCPNhICGsqznchrsoDqqb5O9aUMPfmMc"
+
+# Paste your S3 keys in here
+# Keep this file safe!
+export aws_access_key_id=""
+export aws_secret_access_key=""
