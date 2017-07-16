@@ -33,6 +33,11 @@ int main(int, char**) {
     // ----------------------------------------------------------------------------
     
     
+    // create user id -------------------------------------------------------------
+    srand(time(NULL));
+    int userID = rand() % 100;
+    // ----------------------------------------------------------------------------
+    
     // get input ------------------------------------------------------------------
     cout << "\nFrequency in seconds: ";
     cin >> freq;
@@ -53,14 +58,16 @@ int main(int, char**) {
         cap >> frame;
         // ------------------------------------------------------------------------
         
-        // save picture -----------------------------------------------------------
+        // save picture, id and filename ------------------------------------------
         cout << "Saving picture...\n";
         fileNameTime = time(NULL);
         string fileNameTimeStr = to_string(fileNameTime);
         imwrite(fileNameTimeStr+".jpg", frame);
+        
         ofstream out("currentUpload");
         out << fileNameTimeStr+".jpg";
         out.close();
+        
         cout << "Saved picture...\n";
         // ------------------------------------------------------------------------
      
