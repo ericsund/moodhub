@@ -16,7 +16,7 @@ class Commit < ApplicationRecord
       {
           sha: input_commit.sha,
           user_id: input_commit.author.id,
-          date: input_commit.commit.author.date,
+          datetime: input_commit.commit.author.date,
           html_url: input_commit.html_url,
       }
 
