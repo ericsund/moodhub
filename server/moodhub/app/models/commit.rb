@@ -13,27 +13,19 @@ class Commit < ApplicationRecord
     end
 
     cleaned = permitted.map do |input_commit|
-      {
+      Commit.new(
           sha: input_commit.sha,
           user_id: input_commit.author.id,
           datetime: input_commit.commit.author.date,
-          html_url: input_commit.html_url,
-      }
+          html_url: input_commit.html_url
+      )
 
     end
 
     return cleaned
   end
 
-
-  # t.integer "user_id"
-  # t.datetime "time"
-  # t.float "mood"
-  # t.string "commit_id"
-  # t.text "raw_dump"
-  # t.string "s3_image_id"
-  # t.string "commit_url"
-  def to_data_point()
+  def to_data_point
     return DataPoint.new(
         user_id: self.user_id,
         time: self.datetime,
