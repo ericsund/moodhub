@@ -1,0 +1,37 @@
+<%= form_with(model: health_status, local: true) do |form| %>
+  <% if health_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(health_status.errors.count, "error") %> prohibited this health_status from being saved:</h2>
+
+      <ul>
+      <% health_status.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :health_status_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :s3_image_id %>
+    <%= form.text_field :s3_image_id, id: :health_status_s3_image_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :happiness_level %>
+    <%= form.text_field :happiness_level, id: :health_status_happiness_level %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rekognition_dump %>
+    <%= form.text_area :rekognition_dump, id: :health_status_rekognition_dump %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

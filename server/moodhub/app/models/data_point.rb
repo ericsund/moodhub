@@ -1,0 +1,28 @@
+class DataPoint < ApplicationRecord
+
+  # t.integer "user_id"
+  # t.datetime "time"
+  # t.float "mood"
+  # t.string "commit_id"
+  # t.text "raw_dump"
+  # t.string "s3_image_id"
+  # t.string "commit_url"
+
+
+  def merge(commit_array, health_status_array)
+    #assumes they are for the same user
+
+
+    commit_data_points = commit_array.map do |input_commit|
+      {
+          sha: input_commit.sha,
+          user_id: input_commit.author.id,
+          datetime: input_commit.commit.author.date,
+          html_url: input_commit.html_url,
+      }
+
+
+    end
+  end
+
+end

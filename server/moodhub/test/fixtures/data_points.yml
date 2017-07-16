@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  time: 2017-07-16 10:06:29
+  mood: 1.5
+  commit_id: MyString
+  raw_dump: MyText
+  s3_image_id: MyString
+  commit_url: MyString
+
+two:
+  user_id: 1
+  time: 2017-07-16 10:06:29
+  mood: 1.5
+  commit_id: MyString
+  raw_dump: MyText
+  s3_image_id: MyString
+  commit_url: MyString
