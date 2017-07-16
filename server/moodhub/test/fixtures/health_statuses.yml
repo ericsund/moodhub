@@ -2,8 +2,8 @@
 
 one:
   user_id: 1
-  s3_image_id: 1
+  s3_image_id: MyString
 
 two:
   user_id: 1
-  s3_image_id: 1
+  s3_image_id: MyString

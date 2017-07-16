@@ -1,5 +1,6 @@
 class HealthStatusesController < ApplicationController
   before_action :set_health_status, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:create, :update] #for dev only, disables authenticity checking on create/update
 
   # GET /health_statuses
   # GET /health_statuses.json
