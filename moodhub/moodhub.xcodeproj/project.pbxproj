@@ -24,7 +24,6 @@
 		71A492691F1AB7290023976E /* libopencv_video.3.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A492591F1AB7290023976E /* libopencv_video.3.2.0.dylib */; };
 		71A4926A1F1AB7290023976E /* libopencv_videoio.3.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A4925A1F1AB7290023976E /* libopencv_videoio.3.2.0.dylib */; };
 		71A4926B1F1AB7290023976E /* libopencv_videostab.3.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A4925B1F1AB7290023976E /* libopencv_videostab.3.2.0.dylib */; };
-		71A492731F1AE90D0023976E /* upload.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71A492721F1AE90D0023976E /* upload.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,7 +57,7 @@
 		71A492591F1AB7290023976E /* libopencv_video.3.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_video.3.2.0.dylib; path = ../../../../usr/local/lib/libopencv_video.3.2.0.dylib; sourceTree = "<group>"; };
 		71A4925A1F1AB7290023976E /* libopencv_videoio.3.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videoio.3.2.0.dylib; path = ../../../../usr/local/lib/libopencv_videoio.3.2.0.dylib; sourceTree = "<group>"; };
 		71A4925B1F1AB7290023976E /* libopencv_videostab.3.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.3.2.0.dylib; path = ../../../../usr/local/lib/libopencv_videostab.3.2.0.dylib; sourceTree = "<group>"; };
-		71A492721F1AE90D0023976E /* upload.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = upload.cpp; path = moodhub/upload.cpp; sourceTree = "<group>"; };
+		71A492741F1AF9BE0023976E /* upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = upload.sh; path = moodhub/upload.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +90,7 @@
 		71A492391F1AB69C0023976E = {
 			isa = PBXGroup;
 			children = (
-				71A492721F1AE90D0023976E /* upload.cpp */,
+				71A492741F1AF9BE0023976E /* upload.sh */,
 				71A4924C1F1AB7290023976E /* libopencv_calib3d.3.2.0.dylib */,
 				71A4924D1F1AB7290023976E /* libopencv_core.3.2.0.dylib */,
 				71A4924E1F1AB7290023976E /* libopencv_features2d.3.2.0.dylib */,
@@ -186,7 +185,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71A492731F1AE90D0023976E /* upload.cpp in Sources */,
 				71A492461F1AB69C0023976E /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +318,7 @@
 				71A4924B1F1AB69C0023976E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

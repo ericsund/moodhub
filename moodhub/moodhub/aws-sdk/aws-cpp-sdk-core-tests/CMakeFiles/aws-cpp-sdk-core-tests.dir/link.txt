@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++   -Wall -Werror -pedantic -Wextra -fno-exceptions -Wl,-search_paths_first -Wl,-headerpad_max_install_names  @CMakeFiles/aws-cpp-sdk-core-tests.dir/objects1.rsp  -o aws-cpp-sdk-core-tests ../testing-resources/libtesting-resources.dylib ../aws-cpp-sdk-core/libaws-cpp-sdk-core.dylib -lpthread /usr/lib/libcurl.dylib 
