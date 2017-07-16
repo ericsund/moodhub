@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @health_status.user_id %>
+</p>
+
+<p>
+  <strong>S3 image:</strong>
+  <%= @health_status.s3_image_id %>
+</p>
+
+<%= link_to 'Edit', edit_health_status_path(@health_status) %> |
+<%= link_to 'Back', health_statuses_path %>
