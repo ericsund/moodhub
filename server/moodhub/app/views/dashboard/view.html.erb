@@ -2,4 +2,5 @@
 <p>Find me in app/views/dashboard/view.html.erb</p>
 
 
-<%= @data.to_json %>
+<script>var fakeData = <%= @data.to_json.to_s.html_safe %>
+</script>
