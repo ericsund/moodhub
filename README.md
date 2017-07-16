@@ -1,5 +1,12 @@
 # angelhacks
 
-Let's not make something horrible
+*PRE-REQS*
 
-We got this
+* OpenCV
+* QT
+
+*RUN*
+
+`cd ./moodhub-Desktop/moodhub`
+`./moodhub`
+
