@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716021206) do
+ActiveRecord::Schema.define(version: 20170716023502) do
+
+  create_table "commits", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "sha"
+    t.string "html_url"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "health_statuses", force: :cascade do |t|
     t.integer "user_id"

@@ -1,9 +1,9 @@
 class Commit < ApplicationRecord
 
-  def get_github_commits(user_name, repo_name)
+  def self.pull_in_github_commits(user_name, repo_name)
     #demo endpoint for get request
     #https://api.github.com/repos/cwaffles/soulcast-server/commits/
-    github = Github.new({oauth_token: '2049d4a5b5d19d2eb083a7a99c482ce5e98a9fe4',
+    github = Github.new({oauth_token: ENV['GITHUB_TOKEN'],
                          auto_pagination: true})
 
     raw_commits = github.repos.commits.list(user_name, repo_name).body
@@ -20,10 +20,9 @@ class Commit < ApplicationRecord
           html_url: input_commit.html_url,
       }
 
-    return cleaned
     end
 
-
+    return cleaned
   end
 
 end
