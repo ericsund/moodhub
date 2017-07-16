@@ -1,6 +1,7 @@
 var data = []
 var commit_data = []
 var labels = []
+var commit_types = []
 
 
 // Creates x and y points for data
@@ -21,9 +22,10 @@ function handleCommits(json) {
     if (json.users[i].Commit_ID != null) {
       var point = {
         'x':json.users[i].time,
-        'y':json.users[i].mood
+        'y':json.users[i].mood,
       }
       commit_data.push(point)
+      commit_types.push(json.users[i].Commit_ID)
     }
   }
   console.log(commit_data)
@@ -65,7 +67,8 @@ function createJsonChart() {
                 pointRadius: 4,
                 data: [],
                 borderColor: 'rgba(0,0,255,1)',
-                borderWidth: 0
+                borderWidth: 0,
+                commit_types: []
               },
 
               {
@@ -78,6 +81,14 @@ function createJsonChart() {
               }]
       },
       options: {
+        tooltips: {
+              callbacks: {
+                  label: function(tooltipItem, data) {
+                      var value = data.datasets[0].commit_types[tooltipItem.index];
+                      return "" + value
+                  }
+              }
+          },
           scales: {
               xAxes: [{
                   ticks: {
@@ -105,6 +116,7 @@ function createJsonChart() {
   json.data.labels             = labels
   json.data.datasets[0].data   = commit_data
   json.data.datasets[1].data   = data
+  json.data.datasets[0].commit_types = commit_types
   return json
 }
 
