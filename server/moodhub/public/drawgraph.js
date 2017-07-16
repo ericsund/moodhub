@@ -1,0 +1,140 @@
+var data = []
+var commit_data = []
+var labels = []
+var commit_types = []
+
+
+// Creates x and y points for data
+function handleData(json) {
+    for (i in json.users) {
+      var point = {
+        'x':json.users[i].time,
+        'y':json.users[i].mood
+      }
+      data.push(point)
+    }
+    console.log(data)
+}
+
+// Finds commits and adds them to commit_data array
+function handleCommits(json) {
+  for (i in json.users) {
+    if (json.users[i].commit_id != null) {
+      var point = {
+        'x':json.users[i].time,
+        'y':json.users[i].mood,
+      }
+      commit_data.push(point)
+      commit_types.push(json.users[i].commit_id)
+    }
+  }
+  console.log(commit_data)
+}
+
+// Creates labels for user data points that are 3600 seconds apart
+// Avoids over crowdiing x-axis with labels
+function handleLabels(json) {
+  // Sort json according time as labels are sorted by time.
+  json.users.sort(function(a,b) {
+    return a.time - b.time
+  })
+
+  var last_unix_time = -3600
+  for (i in json.users) {
+    var date = new Date (json.users[i].time*1000)
+    if (json.users[i].time - last_unix_time >= 3600) {
+      labels.push((date.getHours()+1) +":00");
+      last_unix_time = json.users[i].time
+    } else {
+      labels.push("")
+    }
+  }
+  console.log(labels)
+}
+
+// Create graph
+
+function createJsonChart() {
+  var json = {
+
+      data: {
+          // GitHub Data. Will be empty since we haven't implemeneted this part yet!
+          labels:[],
+          datasets: [
+              {
+                label: 'Commits',
+                type: 'bubble',
+                pointRadius: 4,
+                data: [],
+                borderColor: 'rgba(0,0,255,1)',
+                borderWidth: 0,
+                commit_types: []
+              },
+
+              {
+                  label: 'Mood',
+                  type: 'line',
+                  pointRadius: 0,
+                  data: [],
+                  borderColor: 'rgba(255,99,132,1)',
+                  borderWidth: 1
+              }]
+      },
+      options: {
+        tooltips: {
+              callbacks: {
+                  label: function(tooltipItem, data) {
+                      var value = data.datasets[0].commit_types[tooltipItem.index];
+                      return "" + value
+                  }
+              }
+          },
+          scales: {
+              xAxes: [{
+                  ticks: {
+                      autoSkip: true,
+                      maxTicksLimit: 100
+                  }
+              }],
+              yAxes: [{
+                  ticks: {
+                      autoSkip: true,
+                      maxTicksLimit: 10,
+                      beginAtZero: true
+                  }
+              }]
+          },
+          animation: {
+              duration: 0, // general animation time
+          },
+          hover: {
+              animationDuration: 0, // duration of animations when hovering an item
+          },
+          responsiveAnimationDuration: 0, // animation duration after a resize
+      }
+  }
+  json.data.labels             = labels
+  json.data.datasets[0].data   = commit_data
+  json.data.datasets[1].data   = data
+  json.data.datasets[0].commit_types = commit_types
+  return json
+}
+
+
+
+
+// For testing purpose
+
+
+// Comment before deploying
+generateData(fakeData)
+
+function generateData(json) {
+  handleData(json)
+  handleCommits(json)
+  handleLabels(json)
+  var json = createJsonChart()
+  console.log(json)
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, createJsonChart())
+}
