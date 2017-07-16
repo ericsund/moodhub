@@ -9,7 +9,7 @@ class DataPoint < ApplicationRecord
   # t.string "commit_url"
 
 
-  def merge(commit_array, health_status_array)
+  def self.merge(commit_array, health_status_array)
     #assumes they are for the same user
 
     commit_data_points = commit_array.map do |input_commit|
