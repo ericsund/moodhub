@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716154052) do
+ActiveRecord::Schema.define(version: 20170716170629) do
 
   create_table "commits", force: :cascade do |t|
     t.integer "user_id"
     t.string "sha"
     t.string "html_url"
     t.datetime "datetime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "data_points", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "time"
+    t.float "mood"
+    t.string "commit_id"
+    t.text "raw_dump"
+    t.string "s3_image_id"
+    t.string "commit_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

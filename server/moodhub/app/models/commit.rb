@@ -25,4 +25,21 @@ class Commit < ApplicationRecord
     return cleaned
   end
 
+
+  # t.integer "user_id"
+  # t.datetime "time"
+  # t.float "mood"
+  # t.string "commit_id"
+  # t.text "raw_dump"
+  # t.string "s3_image_id"
+  # t.string "commit_url"
+  def to_data_point()
+    return DataPoint.new(
+        user_id: self.user_id,
+        time: self.datetime,
+        commit_id: self.sha,
+        commit_url: self.html_url
+    )
+  end
+
 end
