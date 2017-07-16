@@ -23,7 +23,7 @@ function handleCommits(json) {
         'x':json.users[i].time,
         'y':json.users[i].mood
       }
-      commit_data.push(point);
+      commit_data.push(point)
     }
   }
   console.log(commit_data)
@@ -48,6 +48,64 @@ function handleLabels(json) {
     }
   }
   console.log(labels)
+}
+
+// Create graph
+
+function createJsonChart() {
+  var json = {
+
+      data: {
+          // GitHub Data. Will be empty since we haven't implemeneted this part yet!
+          labels:[],
+          datasets: [
+              {
+                label: 'Commits',
+                type: 'bubble',
+                pointRadius: 4,
+                data: [],
+                borderColor: 'rgba(0,0,255,1)',
+                borderWidth: 0
+              },
+
+              {
+                  label: 'Mood',
+                  type: 'line',
+                  pointRadius: 0,
+                  data: [],
+                  borderColor: 'rgba(255,99,132,1)',
+                  borderWidth: 1
+              }]
+      },
+      options: {
+          scales: {
+              xAxes: [{
+                  ticks: {
+                      autoSkip: true,
+                      maxTicksLimit: 100
+                  }
+              }],
+              yAxes: [{
+                  ticks: {
+                      autoSkip: true,
+                      maxTicksLimit: 10,
+                      beginAtZero: true
+                  }
+              }]
+          },
+          animation: {
+              duration: 0, // general animation time
+          },
+          hover: {
+              animationDuration: 0, // duration of animations when hovering an item
+          },
+          responsiveAnimationDuration: 0, // animation duration after a resize
+      }
+  }
+  json.data.labels             = labels
+  json.data.datasets[0].data   = commit_data
+  json.data.datasets[1].data   = data
+  return json
 }
 
 
@@ -129,6 +187,15 @@ var fakeData = {
    ]
  }
 
-handleData(fakeData)
-handleCommits(fakeData)
-handleLabels(fakeData)
+// Comment before deploying
+generateData(fakeData)
+
+function generateData(json) {
+  handleData(json)
+  handleCommits(json)
+  handleLabels(json)
+  var json = createJsonChart()
+  console.log(json)
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, createJsonChart())
+}
