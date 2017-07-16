@@ -4,7 +4,7 @@ class CreateCommits < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.string :sha
       t.string :html_url
-      t.date :date
+      t.date :datetime
 
       t.timestamps
     end
