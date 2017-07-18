@@ -3,6 +3,7 @@ class CreateCommits < ActiveRecord::Migration[5.1]
     create_table :commits do |t|
       t.integer :user_id
       t.string :sha
+      t.text :message
       t.string :html_url
       t.datetime :datetime
 

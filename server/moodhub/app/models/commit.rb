@@ -9,17 +9,17 @@ class Commit < ApplicationRecord
     raw_commits = github.repos.commits.list(user_name, repo_name).body
 
     permitted = raw_commits.select do |input_commit|
-      input_commit.author
+      input_commit.author && input_commit.commit
     end
 
     cleaned = permitted.map do |input_commit|
       Commit.new(
-          sha: input_commit.sha,
           user_id: input_commit.author.id,
-          datetime: input_commit.commit.author.date,
-          html_url: input_commit.html_url
+          sha: input_commit.sha,
+          message: input_commit.commit.message,
+          html_url: input_commit.html_url,
+          datetime: input_commit.commit.author.date
       )
-
     end
 
     return cleaned

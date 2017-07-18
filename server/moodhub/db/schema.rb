@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170716170629) do
   create_table "commits", force: :cascade do |t|
     t.integer "user_id"
     t.string "sha"
+    t.text "message"
     t.string "html_url"
     t.datetime "datetime"
     t.datetime "created_at", null: false
