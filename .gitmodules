@@ -1,0 +1,3 @@
+[submodule "cpps3/deps/aws-sdk-cpp"]
+	path = cpps3/deps/aws-sdk-cpp
+	url = git@github.com:aws/aws-sdk-cpp.git
